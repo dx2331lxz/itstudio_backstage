@@ -1,2 +1,2 @@
 # itstudio_backstage
-爱特的后台项目
+爱特展示网的后台项目
