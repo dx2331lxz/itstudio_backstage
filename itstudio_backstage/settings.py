@@ -13,14 +13,19 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import sys
 import os
+import configparser
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+conf = configparser.RawConfigParser()
+
+conf.read(os.path.join(BASE_DIR, "config.ini"), encoding="utf-8")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-68*wwg-r$@p72!y9exi+z+9z0lxy3am0l=1@u(6)1$je7plxqq'
+SECRET_KEY = conf.get("Django", "SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,10 +81,10 @@ WSGI_APPLICATION = 'itstudio_backstage.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ITShowPlatform',
-        'USER': 'dx2331lxz',
-        'PASSWORD': '1314521',
+        'ENGINE': conf.get("database", "ENGINE"),
+        'NAME': conf.get("database", "NAME"),
+        'USER': conf.get("database", "USER"),
+        'PASSWORD': conf.get("database", "PASSWORD"),
         'HOST': '127.0.0.1',
         'PORT': 3306,
     }
