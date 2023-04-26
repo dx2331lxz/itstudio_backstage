@@ -1,12 +1,13 @@
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
-import os, time, random,hashlib
+import os, time, random, hashlib
 from django.http import HttpResponse
 
 
 class ImageStorage(FileSystemStorage):
     def __init__(self, location=settings.MEDIA_ROOT, base_url=settings.MEDIA_URL):
         super(ImageStorage, self).__init__(location, base_url)
+
     def _save(self, name, content):
         ext = os.path.splitext(name)[1]
         d = os.path.dirname(name)
