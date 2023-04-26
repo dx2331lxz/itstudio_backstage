@@ -75,6 +75,7 @@ class Members(models.Model):
 class Comments(models.Model):
     class Meta:
         verbose_name_plural = u"弹幕内容"
+        db_table = 'comments_comments'
 
     post_time = models.DateTimeField(verbose_name="发布时间")
     content = models.CharField(verbose_name="弹幕内容", max_length=50, blank=False)
@@ -83,6 +84,7 @@ class Comments(models.Model):
 class NewMember(models.Model):
     class Meta:
         verbose_name_plural = u"报名信息"
+        db_table = 'enroll_newmember'
 
     schedules = [
         (1, "已报名"),
@@ -136,6 +138,7 @@ class EmailVerifyRecord(models.Model):
 class Works(models.Model):
     class Meta:
         verbose_name_plural = u"部门作品"
+        db_table = 'work_works'
 
     grade = models.IntegerField(verbose_name="年份")
     name = models.CharField(verbose_name="事件名称", max_length=30)
