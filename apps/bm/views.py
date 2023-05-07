@@ -40,6 +40,7 @@ class RegistantView(APIView):
         nms.save()
         return JsonResponse({'code': 200, 'message': 'OK'})
 
+
 class RegistantDeleteView(APIView):
     def post(self,request):
         data = json.loads(request.body.decode())
