@@ -8,6 +8,7 @@ from django.contrib import auth
 from django.contrib.auth import logout, login
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
+from apps.administrator.serializer import GetadministratorSerializer
 
 
 # Create your views here.
@@ -55,3 +56,24 @@ class LogoutAPIView(APIView):
     def get(self, request):
         logout(request)
         return Response({'msg': '退出登录成功', 'code': 200}, status=status.HTTP_200_OK)
+
+
+class UpdateAPIView(APIView):
+    def post(self, request):
+        uid = request.data.get('id', '')
+        if uid == '':
+            return Response({'msg': '请传入id', 'code': 403}, status=status.HTTP_403_FORBIDDEN)
+        data = request.data
+        username = data.get('username', '')
+        password = data.get('password', '')
+        email = data.get('email', '')
+        user = User.objects.get(id=uid)
+        if username != '':
+            user.username = username
+        if password != '':
+            user.set_password(password)
+        if email != '':
+            user.email = email
+        user.save()
+        serializer = GetadministratorSerializer(instance=user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
