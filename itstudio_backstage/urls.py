@@ -20,8 +20,9 @@ from apps.login import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # 报名人员管理
-    path('registrant/',include('bm.urls')),
+    # 报名人员管理 + 历史表 + 弹幕
+    path('', include('bm.urls')),
+
     path('login/', include('apps.login.urls')),
     path('administrator/', include('apps.administrator.urls')),
 

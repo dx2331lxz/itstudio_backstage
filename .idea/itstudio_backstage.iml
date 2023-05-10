@@ -17,7 +17,7 @@
       <excludeFolder url="file://$MODULE_DIR$/venv" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.11 (itstudio_backstage)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.9 (itstudio_backstage1)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
