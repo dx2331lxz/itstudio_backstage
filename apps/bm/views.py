@@ -10,7 +10,7 @@ import json
 
 # Create your views here.
 
-class RegistantView(APIView):
+class RegistrantView(APIView):
     def get(self, request):
         id = request.query_params['id']
         sex = request.query_params['sex']
@@ -43,7 +43,7 @@ class RegistantView(APIView):
         return JsonResponse({'code': 200, 'message': 'OK'})
 
 
-class RegistantDeleteView(APIView):
+class RegistrantDeleteView(APIView):
     def post(self, request):
         data = json.loads(request.body.decode())
         id = data['id']

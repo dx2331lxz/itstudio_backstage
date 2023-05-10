@@ -4,7 +4,7 @@ from django.urls import path
 urlpatterns = [
 
     # 报名人员管理
-    path('registrant/', views.RegistantView.as_view()),
+    path('registrant/', views.RegistrantView.as_view()),
     path('registrant/delete/', views.RegistantDeleteView.as_view()),
 
     # 历史表
