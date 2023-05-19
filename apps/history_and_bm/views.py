@@ -10,15 +10,6 @@ from django.http import JsonResponse
 
 # 部门作品
 class WorksAPIView(APIView):
-    def add(self, request):
-        data = request.data
-        grade = data['grade']
-        name = data['name']
-        description = data['description']
-        img = data['img'] # 待修改
-        Works.objects.create(grade=grade, name=name, description=description, img=img)
-        return JsonResponse({'code': 200, 'message': '添加成功'})
-
     def get(self, request):
         id = request.query_params['id']
         grade = request.query_params['grade']
@@ -50,26 +41,12 @@ class WorksAPIView(APIView):
         data = json.loads(request.body.decode())
         id = data['id']
         if id == '':
-            return JsonResponse({'code':400, 'message': 'id为空'})
+            return JsonResponse({'code': 400, 'message': 'id为空'})
         Works.objects.filter(id=id).first().delete()
         return JsonResponse({'code': 200, 'message': '删除成功'})
 
-
 # 部门详情
 class DepartmentAPIView(APIView):
-    def add(self, request):
-        data = request.data
-        department_cn = data['department_cn']
-        department_en = data['department_en']
-        icon = data['icon']  # 待修改
-        background = data['background']
-        content = data['content']
-        introduction = data['introduction']
-        status = data['status']
-        Department.objects.create(department_cn=department_cn, department_en=department_en, icon=icon,
-                                  background=background, content=content, introduction=introduction, status=status)
-        return JsonResponse({'code': 200, 'message': '添加成功'})
-
     def get(self, request):
         id = request.query_params['id']
         department_cn = request.query_params['department_cn']
@@ -104,24 +81,13 @@ class DepartmentAPIView(APIView):
         data = json.loads(request.body.decode())
         id = data['id']
         if id == '':
-            return JsonResponse({'code':400, 'message': 'id为空'})
+            return JsonResponse({'code': 400, 'message': 'id为空'})
         Department.objects.filter(id=id).first().delete()
         return JsonResponse({'code': 200, 'message': '删除成功'})
 
 
 # 历史成员
 class MembersAPIView(APIView):
-    def add(self, request):
-        data = request.data
-        avatar = data['avator'] # 待修改
-        years = data['years']
-        name = data['name']
-        motto = data['motto']
-        department = data['department']
-        Members.objects.create(avatar=avatar, years=years, name=name,
-                               motto=motto, department=department)
-        return JsonResponse({'code': 200, 'message': '添加成功'})
-
     def get(self, request):
         id = request.query_params['id']
         years = request.query_params['years']
@@ -156,6 +122,6 @@ class MembersAPIView(APIView):
         data = json.loads(request.body.decode())
         id = data['id']
         if id == '':
-            return JsonResponse({'code':400, 'message': 'id为空'})
+            return JsonResponse({'code': 400, 'message': 'id为空'})
         Members.objects.filter(id=id).first().delete()
         return JsonResponse({'code': 200, 'message': '删除成功'})
