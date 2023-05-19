@@ -39,9 +39,9 @@ class History(models.Model):
         MinValueValidator(2000)
     ])
     # did = models.IntegerField("部门ID")
-    # did = models.ForeignKey(Department, on_delete=models.DO_NOTHING(), related_name="history", verbose_name="部门id")
+    # did = models.ForeignKey(Department, on_delete=models.DO_NOTHING(), related_name="history_and_bm", verbose_name="部门id")
     # department_cn = models.CharField("部门", max_length=10)  # 如“程序部”
-    department = models.ForeignKey(Department, on_delete=models.DO_NOTHING, related_name="history", verbose_name="部门",
+    department = models.ForeignKey(Department, on_delete=models.DO_NOTHING, related_name="history_and_bm", verbose_name="部门",
                                    default=1)
 
     class Meta:
